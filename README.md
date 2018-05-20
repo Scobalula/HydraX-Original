@@ -51,12 +51,12 @@ HydraX was developed for the users of the Black Ops III Mod Tools to provide som
 
 
 - Q: x Asset completely failed, what to doooooo?
-
 - A: The best thing to do is to send me a lovely PM with the name of the asset, its location, and any other information you can give.
 
+- Q: Pfffft, xyz can already export some of these.
+- A: Correct. 
 
 - Q: Your app is crap!!!!!
-
 - A: Aww damn, sorry to disappoint you. I've been doing this for less than a year and it's a constant learning process, if you have suggestions, tips, see anywhere I butchered completely, do let me know. :c
 
 ## Support Me
