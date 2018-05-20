@@ -39,6 +39,9 @@ HydraX was developed for the users of the Black Ops III Mod Tools to provide som
 
 # FAQs
 
+- Q: What is the string cache?
+- A: The string cache is a huge list of strings processed from multiple files included included files with the mod tools etc. it is currently only used by the string tables in the event a string within it is from another part of the FF. It is loaded and written to with any new strings every time the app runs.
+
 - Q: Some files don't export correctly?
 - A: Yikes! All files are currently under active investigation, but I think most should export perfectly fine. If you find a file that exports incorrectly (particularly the AI files and possibly incorrect entries, missing data, etc) let me know with as much information as possible so it the bug report can be shipped to Sir. Bugg0rt.
 
