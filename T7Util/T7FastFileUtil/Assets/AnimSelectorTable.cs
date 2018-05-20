@@ -173,6 +173,7 @@ namespace Assets
                                 selectorTable.Selectors[i].Rows[j].Columns[k] = ReadFloat(fastFile).ToString();
                                 break;
                             case "_which_board_pull":
+                            case "_variant_type":
                                 selectorTable.Selectors[i].Rows[j].Columns[k] = ReadInt(fastFile).ToString();
                                 break;
                             // Everything else
