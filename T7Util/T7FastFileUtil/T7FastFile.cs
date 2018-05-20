@@ -16,6 +16,7 @@
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -44,6 +45,26 @@ namespace T7FastFileUtil
     /// </summary>
     public class FastFile
     {
+        /// <summary>
+        /// Fast File Asset
+        /// </summary>
+        public class FastFileAsset
+        {
+            /// <summary>
+            /// Asset Name
+            /// </summary>
+            public string Name { get; set; }
+
+            /// <summary>
+            /// Asset Type
+            /// </summary>
+            public string Type { get; set; }
+
+            /// <summary>
+            /// Asset Location within Decoded File
+            /// </summary>
+            public long Location { get; set; }
+        }
         /// <summary>
         /// Fast File Header
         /// </summary>
@@ -147,7 +168,7 @@ namespace T7FastFileUtil
         /// <summary>
         /// Fast File Asset Count
         /// </summary>
-        public int Assets { get; set; }
+        public int AssetCount { get; set; }
 
         /// <summary>
         /// Fast File Strings
@@ -158,6 +179,11 @@ namespace T7FastFileUtil
         /// Fast File Decoded Binary Reader
         /// </summary>
         public BinaryReader DecodedStream { get; set; }
+
+        /// <summary>
+        /// Fast File Assets
+        /// </summary>
+        public Dictionary<string, FastFileAsset> Assets = new Dictionary<string, FastFileAsset>();
 
         /// <summary>
         /// Decodes Fast File to a new file
@@ -324,6 +350,11 @@ namespace T7FastFileUtil
             string extension = name.Split('.').Last();
 
 
+            if (Assets.ContainsKey(name))
+                return;
+
+            // TODO: set this up for other use cases i.e. GUI app
+            FastFileAsset asset = new FastFileAsset();
 
 
             // Switch known extensions
@@ -332,6 +363,7 @@ namespace T7FastFileUtil
                 // String Tables
                 case "csv":
                     Print.Export(name, offset);
+                    Assets.Add(name, asset);
                     DecodedStream.Seek(offset - 16, SeekOrigin.Begin);
                     try
                     {
@@ -352,39 +384,46 @@ namespace T7FastFileUtil
                 case "cfg":
                 case "graph":
                 case "txt":
+                    Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset - 16, SeekOrigin.Begin);
                     RawFile.Export(DecodedStream, extension);
                     break;
                 // Anim Trees
                 case "atr":
+                    Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset - 16, SeekOrigin.Begin);
                     AnimTree.Decompress(DecodedStream);
                     break;
                 // D3DBSP Ent Maps
                 case "d3dbsp":
+                    Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset - 56, SeekOrigin.Begin);
                     D3DBSP.Export(DecodedStream);
                     break;
                 // AI BTs
                 case "ai_asm":
+                    Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset - 32, SeekOrigin.Begin);
                     AnimStateMachine.Decompile(this);
                     break;
                 case "ai_ast":
+                    Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset + 8, SeekOrigin.Begin);
                     AnimSelectorTable.Decompile(this);
                     break;
                 case "ai_am":
+                    Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset + 8, SeekOrigin.Begin);
                     AnimMappingTable.Decompile(this);
                     break;
                 case "ai_bt":
+                    Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset - 16, SeekOrigin.Begin);
                     BehaviorTree.Decompile(this);
