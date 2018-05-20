@@ -2,7 +2,7 @@
 
 The virulent Black Ops III Fast File Exporter
 
-![](https://img.shields.io/github/downloads/HydraX/HydraX/total.svg) ![](https://img.shields.io/github/license/Scobalula/HydraX.svg)
+![](https://img.shields.io/github/downloads-pre/Scobalula/HydraX/total.svg) ![](https://img.shields.io/github/license/Scobalula/HydraX.svg)
 
 HydraX can export several files from Black Ops III Fast Files listed below. It also allows you to decompress Fast Files for examining in a hex editor.
 
