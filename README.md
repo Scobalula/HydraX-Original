@@ -39,6 +39,9 @@ HydraX was developed for the users of the Black Ops III Mod Tools to provide som
 
 # FAQs
 
+- Q: What is the string cache?
+- A: The string cache is a huge list of strings processed from multiple files included included files with the mod tools etc. it is currently only used by the string tables in the event a string within it is from another part of the FF. It is loaded and written to with any new strings every time the app runs.
+
 - Q: Some files don't export correctly?
 - A: Yikes! All files are currently under active investigation, but I think most should export perfectly fine. If you find a file that exports incorrectly (particularly the AI files and possibly incorrect entries, missing data, etc) let me know with as much information as possible so it the bug report can be shipped to Sir. Bugg0rt.
 
@@ -48,12 +51,12 @@ HydraX was developed for the users of the Black Ops III Mod Tools to provide som
 
 
 - Q: x Asset completely failed, what to doooooo?
-
 - A: The best thing to do is to send me a lovely PM with the name of the asset, its location, and any other information you can give.
 
+- Q: Pfffft, xyz can already export some of these.
+- A: Correct. 
 
 - Q: Your app is crap!!!!!
-
 - A: Aww damn, sorry to disappoint you. I've been doing this for less than a year and it's a constant learning process, if you have suggestions, tips, see anywhere I butchered completely, do let me know. :c
 
 ## Support Me
@@ -63,3 +66,9 @@ If you use HydraX in any of your projects, it would be appreciated if you credit
 If you'd like to support me even more, considering buying me a coffee (I drink a lot :x):
 
 [![Donate](https://img.shields.io/badge/Donate-Buy%20Me%20a%20Coffee-yellow.svg)](https://www.buymeacoffee.com/Scobalula)
+
+## Credits
+
+[Hydra Logo](https://www.kisspng.com/png-hercules-and-the-lernaean-hydra-hydra-bay-the-pira-1770604/)
+
+[ZlibNet](https://github.com/gdalsnes/zlibnet)
