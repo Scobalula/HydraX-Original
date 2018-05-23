@@ -28,6 +28,7 @@ namespace PhilUtil
 {
     class Print
     {
+        public static bool EnableDebug = true;
         /// <summary>
         /// Print general info
         /// </summary>
@@ -40,6 +41,23 @@ namespace PhilUtil
                 Console.WriteLine(" {0}", value);
             else
                 Console.Write(" {0}", value);
+        }
+
+        /// <summary>
+        /// Print general info
+        /// </summary>
+        public static void Debug(object value = null, bool newLine = true)
+        {
+            if (EnableDebug)
+            {
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.Write(" DEBUG       |");
+                Console.ResetColor();
+                if (newLine)
+                    Console.WriteLine(" {0}", value);
+                else
+                    Console.Write(" {0}", value);
+            }
         }
 
         /// <summary>

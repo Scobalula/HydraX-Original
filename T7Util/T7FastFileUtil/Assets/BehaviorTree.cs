@@ -55,6 +55,7 @@ namespace Assets
             public string actionNotify { get; set; }
             public string StartFunction { get; set; }
             public string TerminateFunction { get; set; }
+            public string UpdateFunction { get; set; }
             public int? loopingAction { get; set; }
             public int? actionTimeMax { get; set; }
 
@@ -118,6 +119,7 @@ namespace Assets
             bool hasChildren            = fastFile.DecodedStream.ReadInt64() == -1;
             int numChildBehaviors       = fastFile.DecodedStream.ReadInt32();
             // Grab all of these as they can be used differently depending on type
+            // Byte 28
             string behaviorString0      = fastFile.GetString(fastFile.DecodedStream.ReadInt32() - 1);
             string behaviorString1      = fastFile.GetString(fastFile.DecodedStream.ReadInt32() - 1);
             string behaviorString2      = fastFile.GetString(fastFile.DecodedStream.ReadInt32() - 1);
@@ -132,8 +134,10 @@ namespace Assets
             int integer1                = fastFile.DecodedStream.ReadInt32();
             int integer2                = fastFile.DecodedStream.ReadInt32();
 
+            // Print.Debug(String.Format("Behavior {0} - Position 0x{1:X}", behavior.id, fastFile.DecodedStream.BaseStream.Position));
+
             // Switch Type, as what our strings/ints do depends on type
-            switch(behavior.type)
+            switch (behavior.type)
             {
                 // Action Behaviors
                 case "action":
@@ -142,6 +146,7 @@ namespace Assets
                     behavior.actionNotify      = behaviorString5;
                     behavior.StartFunction     = behaviorString6;
                     behavior.TerminateFunction = behaviorString7;
+                    behavior.UpdateFunction    = behaviorString8;
                     behavior.loopingAction     = integer1;
                     behavior.actionTimeMax     = integer2;
                     break;
