@@ -6,6 +6,15 @@ The virulent Black Ops III Fast File Exporter
 
 HydraX can export several files from Black Ops III Fast Files listed below. It also allows you to decompress Fast Files for examining in a hex editor.
 
+## Credits
+
+Harry Bo21 - AI Information / Alpha Testing
+
+[Hydra Logo](https://www.kisspng.com/png-hercules-and-the-lernaean-hydra-hydra-bay-the-pira-1770604/)
+
+[ZlibNet](https://github.com/gdalsnes/zlibnet)
+
+
 # Supported Assets
 
 | Compatible Assets |
@@ -66,9 +75,3 @@ If you use HydraX in any of your projects, it would be appreciated if you credit
 If you'd like to support me even more, considering buying me a coffee (I drink a lot :x):
 
 [![Donate](https://img.shields.io/badge/Donate-Buy%20Me%20a%20Coffee-yellow.svg)](https://www.buymeacoffee.com/Scobalula)
-
-## Credits
-
-[Hydra Logo](https://www.kisspng.com/png-hercules-and-the-lernaean-hydra-hydra-bay-the-pira-1770604/)
-
-[ZlibNet](https://github.com/gdalsnes/zlibnet)
