@@ -439,22 +439,19 @@ namespace Assets
         /// <param name="path"></param>
         public void Save(string path)
         {
-            if (FileUtil.CanAccessFile(path))
+            using (JsonTextWriter output = new JsonTextWriter(new StreamWriter(path)))
             {
-                using (JsonTextWriter output = new JsonTextWriter(new StreamWriter(path)))
-                {
-                    output.Formatting = Formatting.Indented;
-                    output.Indentation = 4;
-                    output.IndentChar = ' ';
+                output.Formatting = Formatting.Indented;
+                output.Indentation = 4;
+                output.IndentChar = ' ';
 
-                    JsonSerializer serializer = new JsonSerializer();
+                JsonSerializer serializer = new JsonSerializer();
 
-                    serializer.NullValueHandling = NullValueHandling.Ignore;
-                    serializer.DefaultValueHandling = DefaultValueHandling.Ignore;
+                serializer.NullValueHandling = NullValueHandling.Ignore;
+                serializer.DefaultValueHandling = DefaultValueHandling.Ignore;
 
-                    serializer.Serialize(output, this);
+                serializer.Serialize(output, this);
 
-                }
             }
         }
     }

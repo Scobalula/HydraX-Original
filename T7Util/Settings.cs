@@ -56,6 +56,14 @@ class Settings
         { "DeleteDecodedFile",          true },
     };
 
+    public bool ShouldExport(string assetType)
+    {
+        if (ExportOptions.ContainsKey(assetType))
+            return ExportOptions[assetType];
+
+        return false;
+    }
+
     /// <summary>
     /// Current Active Settings
     /// </summary>
@@ -76,7 +84,9 @@ class Settings
     /// <param name="file">File Path</param>
     public static void Write(string file)
     {
-        ActiveSettings = new Settings();
+        if (ActiveSettings == null)
+            ActiveSettings = new Settings();
+
         if(FileUtil.CanAccessFile(file))
             File.WriteAllText(file, JsonConvert.SerializeObject(ActiveSettings, Formatting.Indented));
     }

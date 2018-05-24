@@ -37,10 +37,18 @@ namespace T7Util
         /// <param name="args">Command Line Args/Fast Files</param>
         static void Main(string[] args)
         {
-            Settings.Write("Settings.json");
             // Force working directory back to exe
             Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             Console.SetWindowSize((int)(Console.WindowWidth * 1.2), (int)(Console.WindowHeight * 1.5));
+            // Load Settings
+            try
+            {
+                Settings.Load("Settings.json");
+            }
+            catch
+            {
+                Settings.Write("Settings.json");
+            }
             // General App Info
             Print.Info(@" _   ___   _____________  ___  __   __");
             Print.Info(@"| | | \ \ / /  _  \ ___ \/ _ \ \ \ / /");
@@ -54,7 +62,7 @@ namespace T7Util
             Print.Info("Usage - Drag and Drop a Fast File/Fast Files");
             Print.Info();
             // Load String Cache
-            // GlobalStringTable.LoadStringCache();
+            GlobalStringTable.LoadStringCache();
 
             string[] files = args.Where(x => Path.GetExtension(x) == ".ff" && File.Exists(x)).ToArray();
 
@@ -67,15 +75,15 @@ namespace T7Util
             {
                 if(!FileUtil.CanAccessFile(file))
                 {
-                    Print.Error(string.Format("File {0} is in-use or permissions we're denied", Path.GetFileName(file)));
+                    Print.Error(string.Format("File {0} is in-use or permissions were denied", Path.GetFileName(file)));
                     continue;
                 }
 
-                FastFile n = new FastFile();
+                FastFile fastFile = new FastFile();
                 try
                 {
-                    n.Decode(file);
-                    n.Load();
+                    fastFile.Decode(file);
+                    fastFile.Load();
 
                 }
                 catch(Exception e)

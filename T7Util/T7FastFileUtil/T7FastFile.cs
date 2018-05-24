@@ -301,12 +301,13 @@ namespace T7FastFileUtil
 
                 long[] offsets = DecodedStream.FindBytes(DefaultNeedle);
 
-                for(int i = 0; i < offsets.Length; i++)
+                for (int i = 0; i < offsets.Length; i++)
                 {
                     ProcessPotentialAsset(offsets[i]);
                 }
             }
-            System.IO.File.Delete(DecodedFile);
+            if(Settings.ActiveSettings.FastFileOptions["DeleteDecodedFile"])
+                System.IO.File.Delete(DecodedFile);
         }
 
         /// <summary>
@@ -357,6 +358,8 @@ namespace T7FastFileUtil
             // TODO: set this up for other use cases i.e. GUI app
             FastFileAsset asset = new FastFileAsset();
 
+            if (!Settings.ActiveSettings.ShouldExport(extension))
+                return;
 
             // Switch known extensions
             switch (extension)
