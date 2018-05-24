@@ -10,6 +10,8 @@ HydraX can export several files from Black Ops III Fast Files listed below. It a
 
 Harry Bo21 - AI Information / Alpha Testing
 
+[DidUknowiPwn](https://github.com/DidUknowiPwn) - Bug Fixes
+
 [Hydra Logo](https://www.kisspng.com/png-hercules-and-the-lernaean-hydra-hydra-bay-the-pira-1770604/)
 
 [ZlibNet](https://github.com/gdalsnes/zlibnet)
