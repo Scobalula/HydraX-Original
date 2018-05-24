@@ -403,25 +403,28 @@ namespace T7FastFileUtil
                     DecodedStream.Seek(offset - 56, SeekOrigin.Begin);
                     D3DBSP.Export(DecodedStream);
                     break;
-                // AI BTs
+                // AI AnimStateMachines
                 case "ai_asm":
                     Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset - 32, SeekOrigin.Begin);
                     AnimStateMachine.Decompile(this);
                     break;
+                // AI AnimSelectorTables
                 case "ai_ast":
                     Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset + 8, SeekOrigin.Begin);
                     AnimSelectorTable.Decompile(this);
                     break;
+                // AI AnimMappingTables
                 case "ai_am":
                     Assets.Add(name, asset);
                     Print.Export(name, offset);
                     DecodedStream.Seek(offset + 8, SeekOrigin.Begin);
                     AnimMappingTable.Decompile(this);
                     break;
+                // AI Behavior Trees
                 case "ai_bt":
                     Assets.Add(name, asset);
                     Print.Export(name, offset);
@@ -481,16 +484,11 @@ namespace T7FastFileUtil
 
                 DecodedStream.Seek(56 + (Strings.Length - 1) * 8, SeekOrigin.Begin);
 
-                using (StreamWriter output = new StreamWriter(File + ".strings.txt"))
+                for(int i = 0; i < Strings.Length; i++)
                 {
-                    for(int i = 0; i < Strings.Length; i++)
-                    {
-                        Strings[i] = DecodedStream.ReadCString();
+                    Strings[i] = DecodedStream.ReadCString();
 
-                        GlobalStringTable.Strings[Hash.DJB(Encoding.ASCII.GetBytes(Strings[i]))] = Strings[i];
-
-                        output.WriteLine("{0} - {1}", i, Strings[i]);
-                    }
+                    GlobalStringTable.Strings[Hash.DJB(Encoding.ASCII.GetBytes(Strings[i]))] = Strings[i];
                 }
 
             }

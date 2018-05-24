@@ -37,6 +37,7 @@ namespace T7Util
         /// <param name="args">Command Line Args/Fast Files</param>
         static void Main(string[] args)
         {
+            Settings.Write("Settings.json");
             // Force working directory back to exe
             Directory.SetCurrentDirectory(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             Console.SetWindowSize((int)(Console.WindowWidth * 1.2), (int)(Console.WindowHeight * 1.5));
@@ -53,7 +54,7 @@ namespace T7Util
             Print.Info("Usage - Drag and Drop a Fast File/Fast Files");
             Print.Info();
             // Load String Cache
-            GlobalStringTable.LoadStringCache();
+            // GlobalStringTable.LoadStringCache();
 
             string[] files = args.Where(x => Path.GetExtension(x) == ".ff" && File.Exists(x)).ToArray();
 

@@ -33,9 +33,6 @@ namespace PhilUtil
             if (String.IsNullOrEmpty(file))
                 return false;
 
-            if (!File.Exists(file))
-                return true;
-
             FileStream stream = null;
 
             try
@@ -78,6 +75,11 @@ namespace PhilUtil
             return str.ToString();
         }
 
+        /// <summary>
+        /// Reads a string of fixed size and trims any null characters.
+        /// </summary>
+        /// <param name="numBytes">Number of Bytes to Read</param>
+        /// <returns></returns>
         public static string ReadFixedString(this BinaryReader br, int numBytes)
         {
             return Encoding.ASCII.GetString(br.ReadBytes(numBytes)).TrimEnd('\0');
