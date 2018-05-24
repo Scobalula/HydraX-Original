@@ -306,6 +306,7 @@ namespace T7FastFileUtil
                     ProcessPotentialAsset(offsets[i]);
                 }
             }
+            System.IO.File.Delete(DecodedFile);
         }
 
         /// <summary>
@@ -492,7 +493,7 @@ namespace T7FastFileUtil
                         output.WriteLine("{0} - {1}", i, Strings[i]);
                     }
                 }
-
+                System.IO.File.Delete(File + ".strings.txt");
             }
         }
 

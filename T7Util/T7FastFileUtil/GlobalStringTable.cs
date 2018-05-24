@@ -96,14 +96,10 @@ namespace T7FastFileUtil
                     }
                 }
                 // Encode/Dump to File
-                if(FileUtil.CanAccessFile("StringCache.dat"))
-                    File.WriteAllBytes(
-                        "StringCache.dat",
-                        DeflateUtil.Encode(output.ToArray()).ToArray());
+                File.WriteAllBytes( "StringCache.dat", DeflateUtil.Encode(output.ToArray()).ToArray());
                 // Infos
                 Print.Info(string.Format("Wrote {0} Strings to String Cache successfully.", Strings.Count));
                 Print.Info();
-
             }
         }
     }

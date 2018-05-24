@@ -34,7 +34,7 @@ namespace PhilUtil
                 return false;
 
             if (!File.Exists(file))
-                return true;
+                return false;
 
             FileStream stream = null;
 
