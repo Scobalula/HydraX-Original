@@ -141,14 +141,14 @@ namespace Assets
             {
                 // Action Behaviors
                 case "action":
-                    behavior.ASMStateName      = behaviorString3;
-                    behavior.ActionName        = behaviorString4;
-                    behavior.actionNotify      = behaviorString5;
-                    behavior.StartFunction     = behaviorString6;
-                    behavior.TerminateFunction = behaviorString7;
-                    behavior.UpdateFunction    = behaviorString8;
-                    behavior.loopingAction     = integer1;
-                    behavior.actionTimeMax     = integer2;
+                    behavior.ASMStateName         = behaviorString3;
+                    behavior.ActionName           = behaviorString4;
+                    behavior.actionNotify         = behaviorString5;
+                    behavior.StartFunction        = behaviorString6;
+                    behavior.UpdateFunction       = behaviorString7;
+                    behavior.TerminateFunction    = behaviorString8;
+                    behavior.loopingAction        = integer1;
+                    behavior.actionTimeMax        = integer2;
                     break;
                 // Condition Script Behaviors
                 case "condition_script":
