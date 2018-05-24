@@ -306,6 +306,7 @@ namespace T7FastFileUtil
                     ProcessPotentialAsset(offsets[i]);
                 }
             }
+            System.IO.File.Delete(DecodedFile);
         }
 
         /// <summary>
@@ -490,7 +491,7 @@ namespace T7FastFileUtil
 
                     GlobalStringTable.Strings[Hash.DJB(Encoding.ASCII.GetBytes(Strings[i]))] = Strings[i];
                 }
-
+                System.IO.File.Delete(File + ".strings.txt");
             }
         }
 

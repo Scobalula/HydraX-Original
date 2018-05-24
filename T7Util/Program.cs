@@ -70,13 +70,11 @@ namespace T7Util
                     Print.Error(string.Format("File {0} is in-use or permissions we're denied", Path.GetFileName(file)));
                     continue;
                 }
-                string output = file + ".decoded.dat";
 
                 FastFile n = new FastFile();
                 try
                 {
                     n.Decode(file);
-
                     n.Load();
 
                 }
