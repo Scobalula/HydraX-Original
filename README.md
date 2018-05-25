@@ -1,6 +1,6 @@
 # ![](https://i.imgur.com/1dyZzhy.png)
 
-The virulent Black Ops III Fast File Exporter
+The virulent Black Ops III Stock File Printer 🖨
 
 ![](https://img.shields.io/github/downloads-pre/Scobalula/HydraX/total.svg) ![](https://img.shields.io/github/license/Scobalula/HydraX.svg)
 
