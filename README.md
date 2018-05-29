@@ -1,6 +1,6 @@
 # ![](https://i.imgur.com/1dyZzhy.png)
 
-The virulent Black Ops III Fast File Exporter
+The virulent Black Ops III Stock File Printer 🖨
 
 ![](https://img.shields.io/github/downloads-pre/Scobalula/HydraX/total.svg) ![](https://img.shields.io/github/license/Scobalula/HydraX.svg)
 
@@ -9,6 +9,8 @@ HydraX can export several files from Black Ops III Fast Files listed below. It a
 ## Credits
 
 Harry Bo21 - AI Information / Alpha Testing
+
+[DidUknowiPwn](https://github.com/DidUknowiPwn) - Bug Fixes
 
 [Hydra Logo](https://www.kisspng.com/png-hercules-and-the-lernaean-hydra-hydra-bay-the-pira-1770604/)
 
