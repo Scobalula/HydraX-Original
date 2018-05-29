@@ -31,12 +31,18 @@ namespace Assets
             private static Dictionary<int, string> Types = new Dictionary<int, string>()
             {
                 { 0 , "action" },
+                { 1 , "condition_blackboard" },
                 { 2 , "condition_script" },
                 { 3 , "condition_script_negate" },
                 { 4 , "condition_service_script" },
+                { 5 , "decorator_random" },
+                { 6 , "decorator_script" },
+                { 7 , "decorator_timer" },
                 { 8 , "parallel" },
                 { 9 , "sequence" },
                 { 10 , "selector" },
+                { 11 , "probability_selector" },
+                { 12 , "behavior_state_machine" },
                 { 13 , "link_node" },
             };
 
@@ -61,6 +67,8 @@ namespace Assets
 
             public string scriptFunction { get; set; }
             public string interruptName { get; set; }
+
+            public float? percentChance { get; set; }
 
             public int? cooldownMin { get; set; }
             public int? cooldownMax { get; set; }
@@ -127,8 +135,8 @@ namespace Assets
             string behaviorString8      = fastFile.GetString(fastFile.DecodedStream.ReadInt32() - 1);
 
 
-            int integer1                = fastFile.DecodedStream.ReadInt32();
-            int integer2                = fastFile.DecodedStream.ReadInt32();
+            var data                    = fastFile.DecodedStream.ReadBytes(4);
+            var data2                   = fastFile.DecodedStream.ReadBytes(4);
 
             // Print.Debug(String.Format("Behavior {0} - Position 0x{1:X}", behavior.id, fastFile.DecodedStream.BaseStream.Position));
 
@@ -143,8 +151,8 @@ namespace Assets
                     behavior.StartFunction        = behaviorString6;
                     behavior.UpdateFunction       = behaviorString7;
                     behavior.TerminateFunction    = behaviorString8;
-                    behavior.loopingAction        = integer1;
-                    behavior.actionTimeMax        = integer2;
+                    behavior.loopingAction        = BitConverter.ToInt32(data, 0);
+                    behavior.actionTimeMax        = BitConverter.ToInt32(data2, 0);
                     break;
                 // Condition Script Behaviors
                 case "condition_script":
@@ -152,8 +160,12 @@ namespace Assets
                 case "condition_service_script":
                     behavior.scriptFunction     = behaviorString6;
                     behavior.interruptName      = behaviorString7;
-                    behavior.cooldownMin        = integer1;
-                    behavior.cooldownMax        = integer2;
+                    behavior.cooldownMin        = BitConverter.ToInt32(data, 0);
+                    behavior.cooldownMax        = BitConverter.ToInt32(data2, 0);
+                    break;
+                case "probability_selector":
+                case "decorator_random":
+                    behavior.percentChance      = BitConverter.ToSingle(data, 0);
                     break;
                 default:
                     break;
