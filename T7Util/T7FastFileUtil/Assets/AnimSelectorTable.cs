@@ -222,7 +222,9 @@ namespace Assets
         {
             fastFile.DecodedStream.Seek(4, SeekOrigin.Current);
 
-            return fastFile.DecodedStream.ReadSingle().ToString();
+            float data = fastFile.DecodedStream.ReadSingle();
+
+            return data == 0 ? "*" : data.ToString();
         }
 
         /// <summary>
@@ -234,7 +236,9 @@ namespace Assets
         {
             fastFile.DecodedStream.Seek(4, SeekOrigin.Current);
 
-            return fastFile.DecodedStream.ReadInt32().ToString();
+            int data = fastFile.DecodedStream.ReadInt32();
+
+            return data == 0 ? "*" : data.ToString();
         }
 
         /// <summary>
@@ -248,7 +252,9 @@ namespace Assets
 
             fastFile.DecodedStream.Seek(4, SeekOrigin.Current);
 
-            return fastFile.GetString(stringIndex - 1);
+            string str = fastFile.GetString(stringIndex - 1);
+
+            return string.IsNullOrEmpty(str) ? "*" : str;
         }
 
         /// <summary>
@@ -262,7 +268,9 @@ namespace Assets
 
             fastFile.DecodedStream.Seek(4, SeekOrigin.Current);
 
-            return fastFile.GetString(stringIndex - 1);
+            string str = fastFile.GetString(stringIndex - 1);
+
+            return string.IsNullOrEmpty(str) ? "*" : str;
         }
 
         /// <summary>

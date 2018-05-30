@@ -87,7 +87,6 @@ class Settings
         if (ActiveSettings == null)
             ActiveSettings = new Settings();
 
-        if(FileUtil.CanAccessFile(file))
-            File.WriteAllText(file, JsonConvert.SerializeObject(ActiveSettings, Formatting.Indented));
+        File.WriteAllText(file, JsonConvert.SerializeObject(ActiveSettings, Formatting.Indented));
     }
 }
