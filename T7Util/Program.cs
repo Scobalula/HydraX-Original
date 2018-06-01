@@ -29,7 +29,7 @@ namespace T7Util
         /// <summary>
         /// Application Version
         /// </summary>
-        public static string AppVersion = "0.1.4 Alpha";
+        public static string AppVersion = "0.1.5 Alpha";
 
         /// <summary>
         /// Main App Function

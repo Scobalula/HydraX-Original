@@ -220,11 +220,13 @@ namespace Assets
         /// <returns></returns>
         public static string ReadFloat(FastFile fastFile)
         {
-            fastFile.DecodedStream.Seek(4, SeekOrigin.Current);
+            string str = fastFile.GetString(fastFile.DecodedStream.ReadInt32() - 1);
 
             float data = fastFile.DecodedStream.ReadSingle();
 
-            return data == 0 ? "*" : data.ToString();
+            // If this points to a valid string (which should only return * if value)
+            // we're using the string.
+            return string.IsNullOrEmpty(str) ? data.ToString() : str;
         }
 
         /// <summary>
@@ -234,11 +236,13 @@ namespace Assets
         /// <returns></returns>
         public static string ReadInt(FastFile fastFile)
         {
-            fastFile.DecodedStream.Seek(4, SeekOrigin.Current);
+            string str = fastFile.GetString(fastFile.DecodedStream.ReadInt32() - 1);
 
             int data = fastFile.DecodedStream.ReadInt32();
 
-            return data == 0 ? "*" : data.ToString();
+            // If this points to a valid string (which should only return * if value)
+            // we're using the string.
+            return string.IsNullOrEmpty(str) ? data.ToString() : str;
         }
 
         /// <summary>
@@ -270,7 +274,10 @@ namespace Assets
 
             string str = fastFile.GetString(stringIndex - 1);
 
-            return string.IsNullOrEmpty(str) ? "*" : str;
+            // Make them upper case, more for maintaining
+            // naming conventions, doesn't matter once in
+            // the FF whether it's lower or upper case.
+            return string.IsNullOrEmpty(str) ? "*" : str.ToUpper();
         }
 
         /// <summary>
